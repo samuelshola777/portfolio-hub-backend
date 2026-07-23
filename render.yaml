@@ -1,0 +1,56 @@
+databases:
+  - name: portfolio-hub-db
+    databaseName: portfolio_hub
+    user: portfolio_hub
+    plan: free
+
+services:
+  - type: web
+    name: portfolio-hub-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/v1/system/public/health
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: portfolio-hub-db
+          property: connectionString
+      - key: DB_USERNAME
+        fromDatabase:
+          name: portfolio-hub-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: portfolio-hub-db
+          property: password
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: SUPER_ADMIN_EMAIL
+        value: samuelshola14@gmail.com
+      - key: SUPER_ADMIN_USERNAME
+        value: samuel-shola-admin
+      - key: SUPER_ADMIN_PASSWORD
+        sync: false
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_HOST
+        value: smtp-relay.brevo.com
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false

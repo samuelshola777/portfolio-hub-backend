@@ -1,0 +1,88 @@
+server:
+  port: ${PORT:${SERVER_PORT:9999}}
+
+spring:
+  config:
+    import: optional:file:./env.properties
+  application:
+    name: portfolio-hub
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:}
+    username: ${SPRING_DATASOURCE_USERNAME:${DB_USERNAME:}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${DB_PASSWORD:}}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE:100MB}
+      max-request-size: ${MAX_REQUEST_SIZE:110MB}
+  mail:
+    # Keep a non-empty Brevo SMTP default so Spring Boot always creates the
+    # JavaMailSender bean. Render can still override every value with secrets.
+    host: ${MAIL_HOST:smtp-relay.brevo.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+application:
+  front-end-url: ${FRONTEND_URL:http://localhost:3000}
+  allowed-origins: ${ALLOWED_ORIGINS:http://localhost:3000,http://localhost:3001,http://localhost:3002}
+  security:
+    secret-key: ${JWT_SECRET_KEY:}
+    access-token-minutes: ${JWT_ACCESS_TOKEN_MINUTES:1440}
+    refresh-token-days: ${JWT_REFRESH_TOKEN_DAYS:30}
+  configuration:
+    organization:
+      name: ${ORG_NAME:Portfolio Hub}
+      support-email: ${ORG_SUPPORT_EMAIL:support@example.com}
+      sender-email: ${MAIL_FROM:samuel@lightworkstechnologies.com}
+  cloudinary:
+    cloud-name: ${CLOUDINARY_CLOUD_NAME:}
+    api-key: ${CLOUDINARY_API_KEY:}
+    api-secret: ${CLOUDINARY_API_SECRET:}
+  github:
+    token: ${GITHUB_TOKEN:}
+  google:
+    client-id: ${GOOGLE_CLIENT_ID:}
+  bootstrap:
+    admin-email: ${SUPER_ADMIN_EMAIL:samuelshola14@gmail.com}
+    admin-username: ${SUPER_ADMIN_USERNAME:portfolio-admin}
+    admin-password: ${SUPER_ADMIN_PASSWORD:}
+  billing:
+    lifecycle-cron: ${BILLING_LIFECYCLE_CRON:0 15 * * * *}
+    paystack:
+      secret-key: ${PAYSTACK_SECRET_KEY:}
+      base-url: ${PAYSTACK_BASE_URL:https://api.paystack.co}
+      portfolio-callback-url: ${PAYSTACK_PORTFOLIO_CALLBACK_URL:http://localhost:3000/billing/callback}
+      business-callback-url: ${PAYSTACK_BUSINESS_CALLBACK_URL:http://localhost:3001/billing/callback}
+    bank:
+      bank-name: ${BILLING_BANK_NAME:}
+      account-name: ${BILLING_BANK_ACCOUNT_NAME:}
+      account-number: ${BILLING_BANK_ACCOUNT_NUMBER:}
+      instructions: ${BILLING_BANK_INSTRUCTIONS:Use your payment reference as the transfer narration.}
+
+logging:
+  level:
+    root: INFO
+    com.portfolio_hub: INFO

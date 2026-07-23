@@ -27,11 +27,11 @@ Thumbs.db
 logs/
 
 # Environment files
-.env
-.env.*
-*.properties
-*.yml
-*.yaml
+#.env
+#.env.*
+#*.properties
+#*.yml
+#*.yaml
 
 # Maven wrapper (keep these if needed)
 # .mvn/
