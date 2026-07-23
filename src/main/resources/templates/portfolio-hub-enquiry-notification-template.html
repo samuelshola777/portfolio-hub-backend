@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title th:text="|${organizationName} — New recruiter enquiry|">Portfolio Hub — New recruiter enquiry</title>
+  <style>
+    @media only screen and (max-width: 640px) {
+      .email-shell { width:100% !important; }
+      .email-card { padding:32px 20px !important; }
+      .email-heading { font-size:31px !important; }
+      .email-button { display:block !important;text-align:center !important; }
+      .info-label,.info-value { display:block !important;width:100% !important;box-sizing:border-box !important; }
+      .info-label { padding-bottom:3px !important; }
+      .info-value { padding-top:0 !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#e8ecf3;color:#101828;font-family:Arial,Helvetica,sans-serif;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">A recruiter has sent a new message through your public portfolio.</div>
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#e8ecf3;">
+  <tr>
+    <td align="center" style="padding:32px 12px;">
+      <table class="email-shell" role="presentation" width="640" cellspacing="0" cellpadding="0" border="0" style="width:640px;max-width:640px;">
+        <tr>
+          <td style="padding:0 0 18px 4px;">
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td style="width:42px;height:42px;border-radius:12px;background:#091426;color:#8d96ff;text-align:center;font-size:16px;font-weight:800;">PH</td>
+                <td th:text="${organizationName}" style="padding-left:12px;color:#091426;font-size:17px;font-weight:800;">Portfolio Hub</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="email-card" style="padding:46px;border-radius:22px;background:#ffffff;border:1px solid #d8dfeb;box-shadow:0 18px 55px rgba(9,20,38,.11);">
+            <span style="display:inline-block;padding:7px 11px;border-radius:999px;background:#eeefff;color:#4f58bb;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;">New opportunity</span>
+            <h1 class="email-heading" style="margin:24px 0 12px;color:#091426;font-size:39px;line-height:1.08;letter-spacing:-1.3px;">Someone wants to discuss your work.</h1>
+            <p style="margin:0 0 26px;color:#566176;font-size:16px;line-height:1.7;">Hello <span th:text="${fullName}">there</span>, a recruiter submitted an enquiry through your public portfolio.</p>
+
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border:1px solid #e0e5ed;border-radius:13px;background:#f7f9fb;">
+              <tr>
+                <td class="info-label" width="145" style="padding:18px 10px 8px 18px;color:#7b8596;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;">Recruiter</td>
+                <td class="info-value" th:text="${recruiterName}" style="padding:18px 18px 8px 10px;color:#162033;font-size:14px;font-weight:700;">Recruiter name</td>
+              </tr>
+              <tr>
+                <td class="info-label" width="145" style="padding:8px 10px 8px 18px;color:#7b8596;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;">Email</td>
+                <td class="info-value" style="padding:8px 18px 8px 10px;font-size:14px;"><a th:href="|mailto:${recruiterEmail}|" th:text="${recruiterEmail}" style="color:#5364d9;text-decoration:none;">recruiter@example.com</a></td>
+              </tr>
+              <tr>
+                <td class="info-label" width="145" style="padding:8px 10px 18px 18px;color:#7b8596;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;">Company</td>
+                <td class="info-value" th:text="${company}" style="padding:8px 18px 18px 10px;color:#162033;font-size:14px;">Company</td>
+              </tr>
+            </table>
+
+            <p style="margin:28px 0 9px;color:#7b8596;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;">Their message</p>
+            <div th:text="${message}" style="padding:20px;border-left:4px solid #7884ff;border-radius:0 12px 12px 0;background:#f1f3ff;color:#2f3950;font-size:15px;line-height:1.75;white-space:pre-wrap;">Recruiter message</div>
+
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td style="padding:30px 0 16px;">
+                  <a class="email-button" th:href="${dashboardUrl}" href="#" style="display:inline-block;padding:16px 25px;border-radius:10px;background:#091426;color:#ffffff;text-decoration:none;font-size:14px;font-weight:800;box-shadow:0 8px 22px rgba(9,20,38,.22);">Open enquiry dashboard</a>
+                </td>
+              </tr>
+            </table>
+            <p style="margin:0;color:#7b8596;font-size:12px;line-height:1.65;">For safety, verify the sender and avoid sharing passwords, verification codes, or confidential information by email.</p>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding:22px 20px 0;color:#778294;font-size:12px;line-height:1.7;">
+            Need help? <a th:href="|mailto:${supportEmail}|" th:text="${supportEmail}" style="color:#5364d9;text-decoration:none;">support@example.com</a><br>
+            <span th:text="|© ${year} ${organizationName}. All rights reserved.|">© 2026 Portfolio Hub. All rights reserved.</span>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

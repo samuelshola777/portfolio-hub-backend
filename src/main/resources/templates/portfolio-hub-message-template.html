@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title th:text="${subject}">Portfolio Hub update</title>
+  <style>@media(max-width:640px){.shell{width:100%!important}.card{padding:30px 22px!important}.heading{font-size:31px!important}.button{display:block!important;text-align:center!important}}</style>
+</head>
+<body style="margin:0;padding:0;background:#edf1f5;font-family:Arial,Helvetica,sans-serif;color:#102033;">
+<div th:text="${message}" style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">An update from Portfolio Hub.</div>
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#edf1f5;">
+  <tr><td align="center" style="padding:30px 12px;">
+    <table class="shell" role="presentation" width="620" cellspacing="0" cellpadding="0" border="0" style="width:620px;max-width:620px;">
+      <tr><td style="padding:0 4px 16px;color:#07111f;font-size:20px;font-weight:800;">Portfolio<span style="color:#ff8a3d;">/</span></td></tr>
+      <tr><td class="card" style="padding:44px;border:1px solid #d8e0e8;border-radius:20px;background:#ffffff;">
+        <span style="display:inline-block;padding:7px 11px;border-radius:999px;background:#e5faf4;color:#12634f;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">Account update</span>
+        <h1 class="heading" th:text="${subject}" style="margin:22px 0 16px;color:#07111f;font-family:Georgia,'Times New Roman',serif;font-size:39px;font-weight:500;line-height:1.1;">Portfolio Hub update</h1>
+        <div th:text="${message}" style="color:#4f5d70;font-size:16px;line-height:1.75;white-space:pre-line;">Message</div>
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0"><tr><td style="padding-top:28px;"><a class="button" th:href="${dashboardUrl}" style="display:inline-block;padding:15px 23px;border-radius:9px;background:#07111f;color:#ffffff;font-size:14px;font-weight:800;text-decoration:none;">Open my dashboard&nbsp; →</a></td></tr></table>
+      </td></tr>
+      <tr><td align="center" style="padding:20px;color:#778294;font-size:12px;line-height:1.7;">Questions? <a th:href="|mailto:${supportEmail}|" th:text="${supportEmail}" style="color:#14745d;">Support</a><br><span th:text="|© ${year} ${organizationName}. All rights reserved.|">Portfolio Hub</span></td></tr>
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>

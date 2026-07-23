@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${subject}">Portfolio Hub announcement</title>
+</head>
+<body style="margin:0;padding:0;background:#eef1ed;color:#111827;font-family:Arial,Helvetica,sans-serif;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;" th:text="${message}">An important update from Portfolio Hub.</div>
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#eef1ed;">
+    <tr><td align="center" style="padding:32px 14px;">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:680px;background:#ffffff;border:1px solid #dfe4dd;border-radius:18px;overflow:hidden;box-shadow:0 16px 40px rgba(7,17,31,.08);">
+            <tr>
+                <td style="padding:24px 32px;background:#07111f;color:#f8fafc;">
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr><td style="font-size:20px;font-weight:800;letter-spacing:-.5px;">Portfolio<span style="color:#ff8a3d;">/</span></td><td align="right" style="font-size:11px;color:#78e6c8;text-transform:uppercase;letter-spacing:1.5px;">Platform announcement</td></tr>
+                    </table>
+                </td>
+            </tr>
+            <tr><td style="padding:42px 42px 18px;">
+                <div style="display:inline-block;padding:7px 11px;border-radius:999px;background:#e2f8f1;color:#12634f;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">A message for you</div>
+                <h1 style="margin:18px 0 16px;color:#07111f;font-family:Georgia,'Times New Roman',serif;font-size:38px;font-weight:500;line-height:1.08;letter-spacing:-1.2px;" th:text="${subject}">Important update</h1>
+                <div style="color:#485469;font-size:16px;line-height:1.75;white-space:pre-line;" th:text="${message}">Announcement message</div>
+            </td></tr>
+            <tr th:if="${hasAttachments}"><td style="padding:12px 42px 8px;">
+                <div style="padding-top:24px;border-top:1px solid #e6eae5;">
+                    <div style="margin-bottom:14px;color:#07111f;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">Included with this update</div>
+                    <div th:each="attachment : ${attachments}" style="margin-bottom:14px;">
+                        <a th:if="${attachment.image}" th:href="${attachment.url}" style="display:block;text-decoration:none;">
+                            <img th:src="${attachment.url}" th:alt="${attachment.name}" width="596" style="display:block;width:100%;height:auto;max-height:420px;object-fit:cover;border:1px solid #dfe4dd;border-radius:12px;">
+                            <span style="display:block;padding:10px 2px 0;color:#485469;font-size:13px;" th:text="${attachment.name + ' · ' + attachment.size}">Image attachment</span>
+                        </a>
+                        <a th:if="${attachment.video}" th:href="${attachment.url}" style="display:block;padding:20px;border:1px solid #cfe8df;border-radius:12px;background:#f1fbf7;color:#07111f;text-decoration:none;">
+                            <span style="display:inline-block;width:42px;height:42px;border-radius:50%;background:#20a783;color:#fff;font-size:20px;line-height:42px;text-align:center;vertical-align:middle;">▶</span>
+                            <span style="display:inline-block;padding-left:12px;vertical-align:middle;"><strong style="display:block;font-size:15px;" th:text="${attachment.name}">Video</strong><small style="display:block;margin-top:4px;color:#64748b;" th:text="${'Video attached · ' + attachment.size}">Video attached</small></span>
+                        </a>
+                        <a th:if="${attachment.document}" th:href="${attachment.url}" style="display:block;padding:18px;border:1px solid #dfe4dd;border-radius:12px;background:#f8faf8;color:#07111f;text-decoration:none;">
+                            <span style="display:inline-block;width:42px;height:42px;border-radius:10px;background:#07111f;color:#78e6c8;font-size:18px;line-height:42px;text-align:center;vertical-align:middle;">↓</span>
+                            <span style="display:inline-block;padding-left:12px;vertical-align:middle;"><strong style="display:block;font-size:15px;" th:text="${attachment.name}">Document</strong><small style="display:block;margin-top:4px;color:#64748b;" th:text="${'Attached file · ' + attachment.size}">Attached file</small></span>
+                        </a>
+                    </div>
+                    <p style="margin:8px 0 0;color:#748093;font-size:12px;line-height:1.5;">Files are also attached directly to this email when supported by your email provider.</p>
+                </div>
+            </td></tr>
+            <tr><td style="padding:24px 42px 42px;">
+                <a th:href="${dashboardUrl}" style="display:inline-block;padding:15px 22px;border-radius:9px;background:#07111f;color:#ffffff;font-size:14px;font-weight:800;text-decoration:none;">Open Portfolio Hub <span style="color:#78e6c8;">→</span></a>
+            </td></tr>
+            <tr><td style="padding:24px 32px;background:#f4f6f3;border-top:1px solid #e1e6df;color:#748093;font-size:12px;line-height:1.6;text-align:center;">
+                You received this account message from <strong th:text="${organizationName}">Portfolio Hub</strong>.<br>
+                Questions? <a th:href="${'mailto:' + supportEmail}" th:text="${supportEmail}" style="color:#12634f;">support@example.com</a><br>
+                <span th:text="${'© ' + year + ' ' + organizationName}">© Portfolio Hub</span>
+            </td></tr>
+        </table>
+    </td></tr>
+</table>
+</body>
+</html>

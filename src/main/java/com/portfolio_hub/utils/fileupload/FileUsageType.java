@@ -1,0 +1,16 @@
+package com.portfolio_hub.utils.fileupload;
+
+public enum FileUsageType {
+  PROFILE_IMAGE,
+  PROFILE_VIDEO,
+  CV,
+  WORK_THUMBNAIL,
+  WORK_GALLERY_IMAGE,
+  WORK_GALLERY_VIDEO,
+  WORK_DOCUMENT,
+  BACKGROUND_THUMBNAIL,
+  SKILL_ICON,
+  BUSINESS_MEDIA,
+  BILLING_TRANSFER_PROOF,
+  GENERAL,
+}

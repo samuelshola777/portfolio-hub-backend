@@ -1,0 +1,76 @@
+# Compiled files
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env
+.env.*
+*.properties
+*.yml
+*.yaml
+
+# Maven wrapper (keep these if needed)
+# .mvn/
+# mvnw
+# mvnw.cmd
+
+# Application specific
+#application-*.properties
+#application-*.yml
+#env.properties
+#application.properties
+#application.yml
+
+# Build tools
+build/
+dist/
+out/
+node_modules/
+
+# Temp files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Docker
+.dockerignore
+
+# Database
+*.db
+*.sqlite
+
+# Secrets
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+
+# Test coverage
+coverage/
+.coveralls.yml
