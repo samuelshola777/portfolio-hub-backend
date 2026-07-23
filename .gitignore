@@ -27,8 +27,8 @@ Thumbs.db
 logs/
 
 # Environment files
-#.env
-#.env.*
+.env
+.env.*
 #*.properties
 #*.yml
 #*.yaml
